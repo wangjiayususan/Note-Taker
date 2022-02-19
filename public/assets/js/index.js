@@ -1,3 +1,4 @@
+
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -26,30 +27,36 @@ const hide = (elem) => {
 let activeNote = {};
 
 //Access-Control-Allow-Origin: *
-const getNotes = () =>
-  fetch('api/notes', {
+function getNotes() {
+  return fetch('api/notes', {
     method: 'GET',
     headers: {
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
   });
+}
 
-const saveNote = (note) =>
-  fetch('api/notes', {
+function saveNote(note) {
+  return fetch('api/notes', {
     method: 'POST',
     headers: {
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(note),
   });
+}
 
-const deleteNote = (id) =>
-  fetch(`api/notes/${id}`, {
+function deleteNote(id) {
+  return fetch(`api/notes/${id}`, {
     method: 'DELETE',
     headers: {
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
   });
+}
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
